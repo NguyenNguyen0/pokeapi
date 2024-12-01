@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
+    <title>PokeAPI</title>
+</head>
+
+<body>
+    <img class="pokemon-logo" src="../static/img/logo.png" alt="PokeAPI">
+
+    <main class="container">
+        <section class="pokemon-grid">
+            <h1 class="section-title">Pokemon List</h1>
+
+            <nav class="navigate-bar">
+                <button class="previous-page">Previous</button>
+                <button class="next-page">Next</button>
+            </nav>
+            <div class="grid-container">
+                {% for pokemon in pokemons %}
+                    <div class="grid-item">
+                        <div class="pokemon-info-wrapper">
+                            <h3 class="pokemon-id"># <span>{{pokemon.id}}</span></h3>
+                            <h3 class="pokemon-name">{{pokemon.name}}</h3>
+                        </div>
+                        <img class="pokemon-img" src="{{pokemon.image_url}}" onerror="this.onerror=null;this.src='../static/img/fallback.png';" alt="{{pokemon.name}}">
+                        <div class="pokemon-type-container">
+                            {% for type in pokemon.types %}
+                                <span class="pokemon-type {{type}}">{{type}}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="pokemon-details">
+            <div class="pokemon-details__container">
+                <h1 class="section-title">Pokemon Details</h1>
+                <div class="pokemon-details__image">
+                    <img src="" onerror="this.onerror=null;this.src='../static/img/fallback.png';" alt="Pokemon Image"
+                        height="200" width="200">
+                </div>
+                <div class="pokemon-details__info">
+                    <h3 class="pokemon-details__name">name</h3>
+
+                    <div class="table-title">~ Characteristic ~</div>
+                    <table class="pokemon-characteristic-table">
+                        <tr>
+                            <td>HP</td>
+                            <td class="pokemon-hp">38</td>
+                        </tr>
+                        <tr>
+                            <td>ATTACK</td>
+                            <td class="pokemon-attack">41</td>
+                        </tr>
+                        <tr>
+                            <td>DEFENSE</td>
+                            <td class="pokemon-defense">40</td>
+                        </tr>
+                        <tr>
+                            <td>SPECIAL-ATTACK</td>
+                            <td class="pokemon-special-attack">50</td>
+                        </tr>
+                        <tr>
+                            <td>SPECIAL-DEFENSE</td>
+                            <td class="pokemon-special-defense">65</td>
+                        </tr>
+                        <tr>
+                            <td>SPEED</td>
+                            <td class="pokemon-speed">65</td>
+                        </tr>
+                    </table>
+
+                    <button class="show-more-button">Show more</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
