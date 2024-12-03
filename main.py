@@ -1,18 +1,23 @@
 from app import app
 from flask import jsonify, render_template
-from app.api import get_pokemons
-from app.constants import POKEMON_PER_PAGE
+from app.api import get_pokemons_by_page
 
 @app.route("/")
 def index():
-    pokemons = get_pokemons()
-    return render_template("index.html", pokemons=pokemons)
+    DEFAULT_PAGE = 1
+    result = get_pokemons_by_page(DEFAULT_PAGE)
+    return render_template(
+        "index.html",
+        pokemons=result["pokemons"],
+        next=result["next"],
+        previous=result["previous"],
+        page=result["page"]
+    )
 
 
-@app.route("/pokemons/<int:page>")
-def get_pokemons_by_page(page):
-    offset = (page - 1) * POKEMON_PER_PAGE
-    pokemons = get_pokemons(offset=offset)
+@app.route("/api/pokemons/<int:page>")
+def api_get_pokemons_by_page(page):
+    pokemons = get_pokemons_by_page(page)
     return jsonify(pokemons)
 
 

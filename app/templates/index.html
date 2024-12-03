@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../static/css/styles.css">
     <link rel="stylesheet" href="../static/css/pokemon-grid.css">
     <link rel="stylesheet" href="../static/css/pokemon-detail.css">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="../static/img/favicon.png" type="image/x-icon">
     <title>PokeAPI</title>
 </head>
 
@@ -19,36 +19,52 @@
             <h1 class="section-title">PokéDex</h1>
 
             <nav class="navigate-bar">
-                <button class="previous-page">&#8249;</button>
-                <div class="page-number">1</div>
-                <button class="next-page">&#8250;</button>
+                {% if previous == None %}
+                    <button class="previous-page" data-url="{{previous}}" disabled>&#8249;</button>
+                {% else %}
+                    <button class="previous-page" data-url="{{previous}}">&#8249;</button>
+                {% endif %}
+                <div class="page-number">{{page}}</div>
+                <button class="next-page" data-url="{{next}}">&#8250;</button>
             </nav>
 
             <div class="pokemon-grid-container">
                 {% for pokemon in pokemons %}
-                    <div class="pokemon-item">
-                        <h3 class="pokemon-id"># <span>{{pokemon.id}}</span></h3>
-                        
-                        <div class="img-container">
-                            <img class="pokemon-img" src="{{pokemon.image_url}}" onerror="this.onerror=null;this.src='../static/img/fallback.png';" alt="{{pokemon.name}}">
-                        </div>
-                        
-                        <div class="pokemon-info-container">
-                            <h3 class="pokemon-name">{{pokemon.name}}</h3>
-                            <div class="pokemon-apperance-info">
-                                <h4 class="pokemon-weight"><span>{{pokemon.weight}}</span> kg</h4>
-                                <h4 class="pokemon-height"><span>{{pokemon.height}}</span> m</h4>
-                            </div>
+                <div class="pokemon-item">
+                    <h3 class="pokemon-id"># <span>{{pokemon.id}}</span></h3>
 
-                            <div class="pokemon-type-container">
-                                {% for type in pokemon.types %}
-                                <span class="pokemon-type {{type}}">{{type}}</span>
-                                {% endfor %}
-                            </div>
+                    <div class="img-container">
+                        <img class="pokemon-img" src="{{pokemon.image_url}}"
+                            onerror="this.onerror=null;this.src='../static/img/fallback.png';" alt="{{pokemon.name}}">
+                    </div>
+
+                    <div class="pokemon-info-container">
+                        <h3 class="pokemon-name">{{pokemon.name}}</h3>
+                        <div class="pokemon-apperance-info">
+                            <h4 class="pokemon-weight"><span>{{pokemon.weight}}</span> kg</h4>
+                            <h4 class="pokemon-height"><span>{{pokemon.height}}</span> m</h4>
+                        </div>
+
+                        <div class="pokemon-type-container">
+                            {% for type in pokemon.types %}
+                            <span class="pokemon-type {{type}}">{{type}}</span>
+                            {% endfor %}
                         </div>
                     </div>
+                </div>
                 {% endfor %}
             </div>
+
+
+            <nav class="navigate-bar">
+                {% if previous == None %}
+                <button class="previous-page" data-url="{{previous}}" disabled>&#8249;</button>
+                {% else %}
+                <button class="previous-page" data-url="{{previous}}">&#8249;</button>
+                {% endif %}
+                <div class="page-number">{{page}}</div>
+                <button class="next-page" data-url="{{next}}">&#8250;</button>
+            </nav>
         </section>
 
         <section class="pokemon-details">
@@ -95,7 +111,7 @@
         </section>
     </main>
 
-    <script src="../js/getPokemons.js"></script>
+    <script src="../static/js/navigatingPokemons.js"></script>
 </body>
 
 </html>
