@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/pokemon-grid.css">
+    <link rel="stylesheet" href="../static/css/pokemon-detail.css">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
     <title>PokeAPI</title>
 </head>
@@ -13,25 +15,36 @@
     <img class="pokemon-logo" src="../static/img/logo.png" alt="PokeAPI">
 
     <main class="container">
-        <section class="pokemon-grid">
-            <h1 class="section-title">Pokemon List</h1>
+        <section class="pokemon-container">
+            <h1 class="section-title">PokéDex</h1>
 
             <nav class="navigate-bar">
-                <button class="previous-page">Previous</button>
-                <button class="next-page">Next</button>
+                <button class="previous-page">&#8249;</button>
+                <div class="page-number">1</div>
+                <button class="next-page">&#8250;</button>
             </nav>
-            <div class="grid-container">
+
+            <div class="pokemon-grid-container">
                 {% for pokemon in pokemons %}
-                    <div class="grid-item">
-                        <div class="pokemon-info-wrapper">
-                            <h3 class="pokemon-id"># <span>{{pokemon.id}}</span></h3>
-                            <h3 class="pokemon-name">{{pokemon.name}}</h3>
+                    <div class="pokemon-item">
+                        <h3 class="pokemon-id"># <span>{{pokemon.id}}</span></h3>
+                        
+                        <div class="img-container">
+                            <img class="pokemon-img" src="{{pokemon.image_url}}" onerror="this.onerror=null;this.src='../static/img/fallback.png';" alt="{{pokemon.name}}">
                         </div>
-                        <img class="pokemon-img" src="{{pokemon.image_url}}" onerror="this.onerror=null;this.src='../static/img/fallback.png';" alt="{{pokemon.name}}">
-                        <div class="pokemon-type-container">
-                            {% for type in pokemon.types %}
+                        
+                        <div class="pokemon-info-container">
+                            <h3 class="pokemon-name">{{pokemon.name}}</h3>
+                            <div class="pokemon-apperance-info">
+                                <h4 class="pokemon-weight"><span>{{pokemon.weight}}</span> kg</h4>
+                                <h4 class="pokemon-height"><span>{{pokemon.height}}</span> m</h4>
+                            </div>
+
+                            <div class="pokemon-type-container">
+                                {% for type in pokemon.types %}
                                 <span class="pokemon-type {{type}}">{{type}}</span>
-                            {% endfor %}
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
@@ -52,27 +65,27 @@
                     <table class="pokemon-characteristic-table">
                         <tr>
                             <td>HP</td>
-                            <td class="pokemon-hp">38</td>
+                            <td class="pokemon-hp">0</td>
                         </tr>
                         <tr>
                             <td>ATTACK</td>
-                            <td class="pokemon-attack">41</td>
+                            <td class="pokemon-attack">0</td>
                         </tr>
                         <tr>
                             <td>DEFENSE</td>
-                            <td class="pokemon-defense">40</td>
+                            <td class="pokemon-defense">0</td>
                         </tr>
                         <tr>
                             <td>SPECIAL-ATTACK</td>
-                            <td class="pokemon-special-attack">50</td>
+                            <td class="pokemon-special-attack">0</td>
                         </tr>
                         <tr>
                             <td>SPECIAL-DEFENSE</td>
-                            <td class="pokemon-special-defense">65</td>
+                            <td class="pokemon-special-defense">0</td>
                         </tr>
                         <tr>
                             <td>SPEED</td>
-                            <td class="pokemon-speed">65</td>
+                            <td class="pokemon-speed">0</td>
                         </tr>
                     </table>
 
@@ -82,6 +95,7 @@
         </section>
     </main>
 
+    <script src="../js/getPokemons.js"></script>
 </body>
 
 </html>

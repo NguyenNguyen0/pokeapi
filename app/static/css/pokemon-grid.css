@@ -1,0 +1,247 @@
+/* contains css of pokemon-grid list component */
+
+/* GRID CONTAINER */
+.pokemon-container {
+    width: 60%;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.pokemon-grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.pokemon-item {
+    flex: 0 1 calc(33.333% - 10px);
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border: 4px solid #5c5757;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.grid-item:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+}
+
+.pokemon-info-container {
+    margin: 0 -10px;
+    margin-bottom: -10px;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    border: 1px solid #ccc;
+    border-top: 4px solid #5c5757;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #aa1313;
+}
+
+.pokemon-apperance-info {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pokemon-weight,
+.pokemon-height {
+    color: #fff;
+}
+
+.pokemon-id {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 24px;
+    color: #868282;
+}
+
+.pokemon-name {
+    color: #fff;
+    font-size: 26px;
+    text-transform: capitalize;
+}
+
+.img-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.img-container::before {
+    content: '';
+    position: absolute;
+    display: block;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 185px;
+    height: 185px;
+    border-radius: 50%;
+    border: 4px solid #5c5757;
+    background-color: #fff;
+}
+
+.pokemon-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+
+/* POKEMON TYPE CSS */
+.pokemon-type-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pokemon-type {
+    display: block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.pokemon-type.normal {
+    background-color: #A8A878;
+}
+
+.pokemon-type.fighting {
+    background-color: #C03028;
+}
+
+.pokemon-type.flying {
+    background-color: #A890F0;
+}
+
+.pokemon-type.poison {
+    background-color: #A040A0;
+}
+
+.pokemon-type.ground {
+    background-color: #E0C068;
+}
+
+.pokemon-type.rock {
+    background-color: #B8A038;
+}
+
+.pokemon-type.bug {
+    background-color: #A8B820;
+}
+
+.pokemon-type.ghost {
+    background-color: #705898;
+}
+
+.pokemon-type.steel {
+    background-color: #B8B8D0;
+}
+
+.pokemon-type.fire {
+    background-color: #F08030;
+}
+
+.pokemon-type.water {
+    background-color: #6890F0;
+}
+
+.pokemon-type.grass {
+    background-color: #78C850;
+}
+
+.pokemon-type.electric {
+    background-color: #F8D030;
+}
+
+.pokemon-type.psychic {
+    background-color: #F85888;
+}
+
+.pokemon-type.ice {
+    background-color: #98D8D8;
+}
+
+.pokemon-type.dragon {
+    background-color: #7038F8;
+}
+
+.pokemon-type.dark {
+    background-color: #705848;
+}
+
+.pokemon-type.fairy {
+    background-color: #EE99AC;
+}
+
+.pokemon-type.stellar {
+    background-color: #FFD700;
+}
+
+.pokemon-type.unknown {
+    background-color: #68A090;
+}
+
+
+/* NAVIGATE-BAR */
+.navigate-bar {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-number {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    line-height: 100%;
+    font-weight: bold;
+    font-size: 24px;
+    color: #aa1313;
+}
+
+.current-page {
+    display: block;
+    height: 100%;
+    line-height: 100%;
+    font-weight: bold;
+    font-size: 13px;
+    color: #aa1313;
+}
+
+.navigate-bar button:hover {
+    background-color: #333;
+}
+
+.navigate-bar button {
+    padding: 4px 15px;
+    padding-bottom: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #aa1313;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}

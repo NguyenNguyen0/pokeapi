@@ -1,23 +1,19 @@
-import requests
-import json
-from flask import Flask, render_template
-
-app = Flask(__name__)
-
-BASE_URL = r"https://pokeapi.co/api/v2/pokemon"
-
+from app import app
+from flask import jsonify, render_template
+from app.api import get_pokemons
+from app.constants import POKEMON_PER_PAGE
 
 @app.route("/")
 def index():
-    responses = requests.get(f"{BASE_URL}?offset=9&limit=9")
-    pokemons = responses.json().get("results", [])
-    for pokemon in pokemons:
-        pokemon_details = requests.get(pokemon["url"]).json()
-        pokemon["image_url"] = pokemon_details["sprites"]["front_default"]
-        pokemon["types"] = [t["type"]["name"] for t in pokemon_details["types"]]
-        pokemon["id"] = pokemon_details["id"]
-
+    pokemons = get_pokemons()
     return render_template("index.html", pokemons=pokemons)
+
+
+@app.route("/pokemons/<int:page>")
+def get_pokemons_by_page(page):
+    offset = (page - 1) * POKEMON_PER_PAGE
+    pokemons = get_pokemons(offset=offset)
+    return jsonify(pokemons)
 
 
 if __name__ == "__main__":
