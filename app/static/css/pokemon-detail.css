@@ -1,6 +1,13 @@
+:root {
+    --primary-red-color: #aa1313;
+    --light-gray-color: #ccc;
+    --primary-white-color: #fff;
+    --text-color: #333;
+}
+
 /* POKEMON DETAIlS */
 .pokemon-details {
-    border: 1px solid #ccc;
+    border: 1px solid var(--light-gray-color);
     width: 30%;
     display: flex;
     align-items: center;
@@ -28,7 +35,7 @@
     padding: 10px;
     font-size: 28px;
     font-weight: bold;
-    color: #333;
+    color: var(--text-color);
     text-transform: capitalize;
     text-align: center;
     border-radius: 10px;
@@ -40,7 +47,7 @@
     margin-top: 20px;
     font-size: 18px;
     font-weight: bold;
-    color: #333;
+    color: var(--text-color);
     text-align: center;
 }
 
@@ -72,11 +79,11 @@
     display: block;
     margin: 0 auto;
     padding: 10px 20px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--light-gray-color);
     border-radius: 5px;
     background-color: #aa1313;
     font-weight: bold;
-    color: #fff;
+    color: var(--primary-white-color);
     cursor: pointer;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
     margin-top: 30px;

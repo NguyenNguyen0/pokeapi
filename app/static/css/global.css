@@ -1,5 +1,12 @@
 /* contains global css */
 
+:root {
+    --primary-yellow-color: #ffcc03;
+    --text-border-color: #3c59a5;
+    --primary-text-color: #333;
+    --background-color: #f5f5f5;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-image: url('/static/img/background-img.png');
@@ -11,7 +18,7 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: var(--primary-text-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,7 +31,7 @@ ul {
 }
 
 li {
-    background-color: #fff;
+    background-color: var(--background-color);
     margin: 10px 0;
     padding: 10px;
     border-radius: 5px;
@@ -57,6 +64,6 @@ img {
     font-size: 30px;
     font-weight: 900;
     text-align: center;
-    color: #ffcc03;
-    -webkit-text-stroke: 2px #3c59a5;
+    color: var(--primary-yellow-color);
+    -webkit-text-stroke: 2px var(--text-border-color);
 }
