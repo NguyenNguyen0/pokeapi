@@ -5,6 +5,22 @@ import asyncio
 from app.constants import POKEMON_DETAIL_URL, POKEMON_PER_PAGE
 
 
+def get_pokemon_by_name(name):
+    pokemon = requests.get(f"{POKEMON_DETAIL_URL}/{name}").json()
+    pokemon["image_url"] = pokemon["sprites"]["front_default"]
+    pokemon["types"] = [t["type"]["name"] for t in pokemon["types"]]
+    for index, stat in enumerate([
+        "hp",
+        "attack",
+        "defense",
+        "special_attack",
+        "special_defense",
+        "speed",
+    ]):
+        pokemon[stat] = pokemon["stats"][index]["base_stat"] 
+    return pokemon
+
+
 def get_pokemons_by_page(page):
     offset = (page - 1) * POKEMON_PER_PAGE
     pokemons = asyncio.run(get_pokemons_async(offset=offset))

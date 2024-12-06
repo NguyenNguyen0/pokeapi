@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderPokemons = async (data) => {
         const pokemons = data.pokemons.map(pokemon =>
-            `<div class="pokemon-item">
+            `<div class="pokemon-item" data-name="${pokemon.name}">
                 <h3 class="pokemon-id"># <span>${pokemon.id}</span></h3>
 
                 <div class="img-container">

@@ -30,7 +30,7 @@
 
             <div class="pokemon-grid-container">
                 {% for pokemon in pokemons %}
-                <div class="pokemon-item">
+                <div class="pokemon-item" data-name="{{pokemon.name}}">
                     <h3 class="pokemon-id"># <span>{{pokemon.id}}</span></h3>
 
                     <div class="img-container">
@@ -68,40 +68,47 @@
         </section>
 
         <section class="pokemon-details">
-            <div class="pokemon-details__container">
-                <h1 class="section-title">Pokemon Details</h1>
-                <div class="pokemon-details__image">
-                    <img src="" onerror="this.onerror=null;this.src='../static/img/fallback.png';" alt="Pokemon Image"
+            <h1 class="section-title">Pokemon Details</h1>
+            <div class="pokemon-details-container">
+                <h3 class="pokemon-details-id"># <span>0</span></h3>
+
+                <div class="pokemon-details-img-container">
+                    <img class="pokemon-details-img" src="" onerror="this.onerror=null;this.src='../static/img/fallback.png';" alt="Pokemon Image"
                         height="200" width="200">
                 </div>
-                <div class="pokemon-details__info">
-                    <h3 class="pokemon-details__name">name</h3>
+
+                <div class="pokemon-details-info">
+                    <h3 class="pokemon-details-name">name</h3>
+
+                    <div class="pokemon-details-type-container">
+                        <!-- <span class="pokemon-type normal">normal</span> -->
+                    </div>
 
                     <div class="table-title">~ Characteristic ~</div>
                     <table class="pokemon-characteristic-table">
                         <tr>
                             <td>HP</td>
-                            <td class="pokemon-hp">0</td>
+                            <td class="pokemon-details-hp">0</td>
                         </tr>
                         <tr>
                             <td>ATTACK</td>
-                            <td class="pokemon-attack">0</td>
+                            <td class="pokemon-details-attack">0</td>
                         </tr>
                         <tr>
                             <td>DEFENSE</td>
-                            <td class="pokemon-defense">0</td>
+                            <td class="pokemon-details-defense">0</td>
                         </tr>
                         <tr>
                             <td>SPECIAL-ATTACK</td>
-                            <td class="pokemon-special-attack">0</td>
+                            <td class="pokemon-details-sp-attack">0</td>
                         </tr>
                         <tr>
                             <td>SPECIAL-DEFENSE</td>
-                            <td class="pokemon-special-defense">0</td>
+                            <td class="pokemon-details-sp-defense">0</td>
                         </tr>
                         <tr>
                             <td>SPEED</td>
-                            <td class="pokemon-speed">0</td>
+                            <td class="pokemon-details-speed">0</td>
                         </tr>
                     </table>
 
@@ -112,6 +119,7 @@
     </main>
 
     <script src="../static/js/navigatingPokemons.js"></script>
+    <script src="../static/js/showDetailInfo.js"></script>
 </body>
 
 </html>
